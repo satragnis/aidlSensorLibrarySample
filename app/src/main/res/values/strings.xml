@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SensorSampleAidl</string>
+    <string name="rotation">Rotation:</string>
+    <string name="magnetometer_t">Magnetometer (μT):</string>
+    <string name="gyroscope_rad_s">Gyroscope (rad/s):</string>
+    <string name="accelerometer_m_s2">Accelerometer (m/s2):</string>
+</resources>
