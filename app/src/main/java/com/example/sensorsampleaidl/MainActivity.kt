@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), SensorUtilListener {
         SensorUtil.initialiseSensor(this, Sensor.TYPE_ROTATION_VECTOR, this)
 
         registerSensorBTN.setOnClickListener {
-            SensorUtil.registerSensor(8000)
+            SensorUtil.registerSensor(10000)
         }
 
         unRegisterSensorBTN.setOnClickListener {

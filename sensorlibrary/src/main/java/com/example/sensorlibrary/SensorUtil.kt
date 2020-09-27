@@ -19,8 +19,7 @@ object SensorUtil {
     private var iMyAidlSensorInterface: IMyAidlSensorInterface? = null
     private var sensorUtilListener: SensorUtilListener? = null
     private var context: Context? = null
-    private var mSensorManager: SensorManager? = null
-    private var mSensor: Sensor? = null
+    private var intervalInMS:Int = 8000 //8 MS by default
     private var sensorType: Int = -999
     private const val TAG = "++++++"
     lateinit var mainHandler: Handler
@@ -69,7 +68,10 @@ object SensorUtil {
     }
 
     //register the sensor via aidl
-    fun registerSensor(intervalInMS: Int) {
+    fun registerSensor(intInMS: Int) {
+        if(intInMS>8000) {
+            intervalInMS = intInMS
+        }
         iMyAidlSensorInterface?.registerSensor(intervalInMS)
         mainHandler.post(readingSensorHandler)
     }
@@ -78,7 +80,7 @@ object SensorUtil {
     private val readingSensorHandler = object : Runnable {
         override fun run() {
             getSensorReading()
-            mainHandler.postDelayed(this, 8L)
+            mainHandler.postDelayed(this, (intervalInMS/1000L) )
         }
     }
 
